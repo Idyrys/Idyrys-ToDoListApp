@@ -75,7 +75,16 @@ public class TaskService {
         }
     }
 
-    public Tasks showAllTask(){
-        return null;
-    }
+   public void completedTask(int id){
+
+       try {
+           Connection connection = tasksRepo.connectToDataBase();
+           Statement statement = connection.createStatement();
+           statement.executeUpdate("update tb_tasks set status = '"+TaskStatus.DONE+"' where id = '"+id+"'");
+           System.out.println("Задача успешно выполнено!\n");
+           connection.close();
+       } catch (SQLException e) {
+           throw new RuntimeException(e);
+       }
+   }
 }

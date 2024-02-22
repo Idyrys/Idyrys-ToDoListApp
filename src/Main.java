@@ -16,7 +16,8 @@ public class Main {
                      1. Создать
                      2. Редактировать
                      3. Удалить
-                     4. Показать задачи""");
+                     4. Показать задачи
+                     5. Выполнит задачи""");
             System.out.print("Выберите номер действия (1-4):");
             int answer = scanner.nextInt();
             switch (answer){
@@ -42,6 +43,10 @@ public class Main {
                         System.out.print(task.toString());
                     }
                     System.out.println();
+                    break;
+                case 5:
+                    System.out.println("Введите идентификатор задачи, которую хотите отметить как выполненную:");
+                    taskService.completedTask(scanner.nextInt());
                     break;
                 default:
                     System.out.println("Ошибка !");
